@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: marketfeed-postgres
+    environment:
+      POSTGRES_DB: marketfeed
+      POSTGRES_USER: marketfeed
+      POSTGRES_PASSWORD: marketfeed
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U marketfeed -d marketfeed"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  marketfeed-app:
+    build:
+      context: ./java/marketfeed-server
+      dockerfile: Dockerfile
+    container_name: marketfeed-app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SERVER_PORT: 9001
+      DB_URL: jdbc:postgresql://postgres:5432/marketfeed
+      DB_USER: marketfeed
+      DB_PASSWORD: marketfeed
+    ports:
+      - "9002:9001"
+    restart: on-failure
+
+volumes:
+  postgres_data:

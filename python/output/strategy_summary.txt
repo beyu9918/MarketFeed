@@ -1,0 +1,5 @@
+total_return: 0.018821
+win_rate: 0.372093
+max_drawdown: 0.053346
+sharpe: 0.837181
+sortino: 0.303271

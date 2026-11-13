@@ -1,0 +1,9 @@
+symbol,side,price,quantity,strategy_name,timestamp
+AAPL,BUY,100.0,1,moving_average_cross,2026-11-04 09:30:00+00:00
+AAPL,SELL,101.2,1,moving_average_cross,2026-11-04 09:31:00+00:00
+AAPL,BUY,102.5,1,moving_average_cross,2026-11-04 09:32:00+00:00
+AAPL,SELL,105.2,1,moving_average_cross,2026-11-04 09:36:00+00:00
+AAPL,BUY,103.8,1,moving_average_cross,2026-11-04 09:40:00+00:00
+MSFT,BUY,202.8,1,moving_average_cross,2026-11-04 09:32:00+00:00
+MSFT,SELL,204.0,1,moving_average_cross,2026-11-04 09:37:00+00:00
+MSFT,BUY,206.1,1,moving_average_cross,2026-11-04 09:41:00+00:00
